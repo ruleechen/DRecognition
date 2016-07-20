@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
+using System.Drawing.Imaging;
 
-namespace DRecognition.Processors
+namespace DRecognition.ImageFilters
 {
     public class ThresholdFilter : IImageFilter
     {
@@ -18,7 +14,13 @@ namespace DRecognition.Processors
 
         public Image Apply(Image image)
         {
-            return null;
+            //var aa = image.DrawBitmap();
+            //var bitmap = AForge.Imaging.Image.Clone(aa, PixelFormat.);
+            //var filter = new AForge.Imaging.Filters.Threshold(ThresholdValue);
+            //bitmap = filter.Apply(bitmap);
+            //return bitmap;
+
+            return image;
         }
     }
 }

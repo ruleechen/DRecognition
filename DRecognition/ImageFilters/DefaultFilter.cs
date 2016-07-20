@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace DRecognition.Processors
+namespace DRecognition.ImageFilters
 {
     public class DefaultFilter : IImageFilter
     {

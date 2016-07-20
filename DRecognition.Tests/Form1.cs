@@ -1,4 +1,4 @@
-﻿using DRecognition.Processors;
+﻿using DRecognition.ImageFilters;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -32,7 +32,7 @@ namespace DRecognition.Tests
                 }
 
                 var service = new RecognitionService();
-                service.Filters.AddRange(filters);
+                service.Processors.AddRange(filters);
                 var text = service.GetText(image);
                 txtRecognizing.Text = text;
                 picTarge.Image = image;
