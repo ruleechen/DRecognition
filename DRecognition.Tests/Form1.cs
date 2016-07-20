@@ -13,7 +13,7 @@ namespace DRecognition.Tests
             InitializeComponent();
         }
 
-        private void Recognizing()
+        private void Recognizing(bool readText = true)
         {
             try
             {
@@ -31,11 +31,15 @@ namespace DRecognition.Tests
                     }
                 }
 
-                var service = new RecognitionService();
-                service.ImageFilters.AddRange(filters);
-                var text = service.GetText(image);
-                txtRecognizing.Text = text;
                 picTarge.Image = image;
+
+                if (readText)
+                {
+                    var service = new RecognitionService();
+                    service.ImageFilters.AddRange(filters);
+                    var text = service.GetText(image);
+                    txtRecognizing.Text = text;
+                }
             }
             catch (Exception ex)
             {
