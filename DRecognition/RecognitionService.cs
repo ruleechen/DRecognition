@@ -29,16 +29,16 @@ namespace DRecognition
             tesseract.SetVariable("tessedit_pageseg_mode", PageSegMode.Auto.ToString());
             tesseract.SetVariable("tessedit_char_whitelist", "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQLSTUVWXYZ");
 
-            Processors = new List<IImageFilter>();
+            ImageFilters = new List<IImageFilter>();
         }
 
-        public List<IImageFilter> Processors { get; set; }
+        public List<IImageFilter> ImageFilters { get; set; }
 
         public string GetText(Image image)
         {
-            if (Processors != null)
+            if (ImageFilters != null)
             {
-                foreach (var item in Processors)
+                foreach (var item in ImageFilters)
                 {
                     image = item.Apply(image);
                 }

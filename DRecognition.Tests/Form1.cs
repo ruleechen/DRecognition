@@ -32,7 +32,7 @@ namespace DRecognition.Tests
                 }
 
                 var service = new RecognitionService();
-                service.Processors.AddRange(filters);
+                service.ImageFilters.AddRange(filters);
                 var text = service.GetText(image);
                 txtRecognizing.Text = text;
                 picTarge.Image = image;

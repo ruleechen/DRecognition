@@ -1,5 +1,5 @@
-﻿using System.Drawing;
-using System.Drawing.Imaging;
+﻿using AForge.Imaging.Filters;
+using System.Drawing;
 
 namespace DRecognition.ImageFilters
 {
@@ -14,13 +14,9 @@ namespace DRecognition.ImageFilters
 
         public Image Apply(Image image)
         {
-            //var aa = image.DrawBitmap();
-            //var bitmap = AForge.Imaging.Image.Clone(aa, PixelFormat.);
-            //var filter = new AForge.Imaging.Filters.Threshold(ThresholdValue);
-            //bitmap = filter.Apply(bitmap);
-            //return bitmap;
-
-            return image;
+            var bitmap = Grayscale.CommonAlgorithms.RMY.Apply(new Bitmap(image));
+            var filter = new Threshold(ThresholdValue);
+            return filter.Apply(bitmap);
         }
     }
 }
