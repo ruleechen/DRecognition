@@ -1,12 +1,7 @@
 ﻿using DRecognition.Processors;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DRecognition.Tests
@@ -20,25 +15,32 @@ namespace DRecognition.Tests
 
         private void Recognizing()
         {
-            var processors = new List<IImgProcessor>();
-            var image = (Image)picSource.Image.Clone();
-
-            if (!string.IsNullOrWhiteSpace(txtThreshold.Text))
+            try
             {
-                int threshold;
-                if (int.TryParse(txtThreshold.Text.Trim(), out threshold))
-                {
-                    var processor = new ThresholdProcessor(threshold);
-                    image = processor.Process(image);
-                    processors.Add(processor);
-                }
-            }
+                var filters = new List<IImageFilter>();
+                var image = (Image)picSource.Image.Clone();
 
-            var service = new RecognitionService();
-            service.Processors.AddRange(processors);
-            var text = service.GetText(image);
-            txtRecognizing.Text = text;
-            picTarge.Image = image;
+                if (!string.IsNullOrWhiteSpace(txtThreshold.Text))
+                {
+                    int threshold;
+                    if (int.TryParse(txtThreshold.Text.Trim(), out threshold))
+                    {
+                        var filter = new ThresholdFilter(threshold);
+                        image = filter.Apply(image);
+                        filters.Add(filter);
+                    }
+                }
+
+                var service = new RecognitionService();
+                service.Filters.AddRange(filters);
+                var text = service.GetText(image);
+                txtRecognizing.Text = text;
+                picTarge.Image = image;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnLoadImage_Click(object sender, EventArgs e)

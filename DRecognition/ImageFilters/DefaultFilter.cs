@@ -2,9 +2,9 @@
 
 namespace DRecognition.Processors
 {
-    public class DefaultProcessor : IImgProcessor
+    public class DefaultFilter : IImageFilter
     {
-        public Image Process(Image image)
+        public Image Apply(Image image)
         {
             return image;
         }

@@ -47,9 +47,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IImgProcessor.cs" />
-    <Compile Include="Processors\DefaultProcessor.cs" />
-    <Compile Include="Processors\ThresholdProcessor.cs" />
+    <Compile Include="IImageFilter.cs" />
+    <Compile Include="ImageFilters\DefaultFilter.cs" />
+    <Compile Include="ImageFilters\ThresholdFilter.cs" />
     <Compile Include="RecognitionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

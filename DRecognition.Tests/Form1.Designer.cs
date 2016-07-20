@@ -40,18 +40,18 @@
             // 
             // btnLoadImage
             // 
-            this.btnLoadImage.Location = new System.Drawing.Point(137, 168);
+            this.btnLoadImage.Location = new System.Drawing.Point(12, 3);
             this.btnLoadImage.Name = "btnLoadImage";
-            this.btnLoadImage.Size = new System.Drawing.Size(75, 23);
+            this.btnLoadImage.Size = new System.Drawing.Size(107, 23);
             this.btnLoadImage.TabIndex = 0;
-            this.btnLoadImage.Text = "Load Image";
+            this.btnLoadImage.Text = "Load Initial Image";
             this.btnLoadImage.UseVisualStyleBackColor = true;
             this.btnLoadImage.Click += new System.EventHandler(this.btnLoadImage_Click);
             // 
             // picSource
             // 
             this.picSource.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picSource.Location = new System.Drawing.Point(12, 12);
+            this.picSource.Location = new System.Drawing.Point(12, 33);
             this.picSource.Name = "picSource";
             this.picSource.Size = new System.Drawing.Size(200, 150);
             this.picSource.TabIndex = 1;
@@ -60,7 +60,7 @@
             // picTarge
             // 
             this.picTarge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picTarge.Location = new System.Drawing.Point(218, 12);
+            this.picTarge.Location = new System.Drawing.Point(218, 33);
             this.picTarge.Name = "picTarge";
             this.picTarge.Size = new System.Drawing.Size(200, 150);
             this.picTarge.TabIndex = 2;
@@ -68,7 +68,7 @@
             // 
             // txtThreshold
             // 
-            this.txtThreshold.Location = new System.Drawing.Point(112, 213);
+            this.txtThreshold.Location = new System.Drawing.Point(112, 195);
             this.txtThreshold.Name = "txtThreshold";
             this.txtThreshold.Size = new System.Drawing.Size(100, 20);
             this.txtThreshold.TabIndex = 3;
@@ -77,7 +77,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(52, 216);
+            this.label1.Location = new System.Drawing.Point(52, 198);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 4;
@@ -85,7 +85,7 @@
             // 
             // txtRecognizing
             // 
-            this.txtRecognizing.Location = new System.Drawing.Point(218, 171);
+            this.txtRecognizing.Location = new System.Drawing.Point(219, 6);
             this.txtRecognizing.Name = "txtRecognizing";
             this.txtRecognizing.Size = new System.Drawing.Size(199, 20);
             this.txtRecognizing.TabIndex = 5;
@@ -94,7 +94,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(429, 266);
+            this.ClientSize = new System.Drawing.Size(429, 323);
             this.Controls.Add(this.txtRecognizing);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtThreshold);
