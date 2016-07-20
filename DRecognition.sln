@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DRecognition", "DRecognition\DRecognition.csproj", "{D5E0893A-C7A4-455C-B90C-0241A475368B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DRecognition.Tests", "DRecognition.Tests\DRecognition.Tests.csproj", "{F0E7F6D4-5CA8-4BDB-AFF8-B32AA6ACA323}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DRecognition.Tests", "DRecognition.Tests\DRecognition.Tests.csproj", "{E4E77BA2-F9E2-4B9D-AAA6-8BB4978A4DC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{D5E0893A-C7A4-455C-B90C-0241A475368B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5E0893A-C7A4-455C-B90C-0241A475368B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5E0893A-C7A4-455C-B90C-0241A475368B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F0E7F6D4-5CA8-4BDB-AFF8-B32AA6ACA323}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F0E7F6D4-5CA8-4BDB-AFF8-B32AA6ACA323}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F0E7F6D4-5CA8-4BDB-AFF8-B32AA6ACA323}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F0E7F6D4-5CA8-4BDB-AFF8-B32AA6ACA323}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4E77BA2-F9E2-4B9D-AAA6-8BB4978A4DC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4E77BA2-F9E2-4B9D-AAA6-8BB4978A4DC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4E77BA2-F9E2-4B9D-AAA6-8BB4978A4DC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4E77BA2-F9E2-4B9D-AAA6-8BB4978A4DC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

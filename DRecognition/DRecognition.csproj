@@ -49,7 +49,7 @@
   <ItemGroup>
     <Compile Include="IImgProcessor.cs" />
     <Compile Include="Processors\DefaultProcessor.cs" />
-    <Compile Include="Processors\SzskProcessor.cs" />
+    <Compile Include="Processors\ThresholdProcessor.cs" />
     <Compile Include="RecognitionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

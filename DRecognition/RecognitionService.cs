@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Web;
@@ -27,12 +28,22 @@ namespace DRecognition
             tesseract = new TesseractEngine(dataPath, language, EngineMode.Default);
             tesseract.SetVariable("tessedit_pageseg_mode", PageSegMode.Auto.ToString());
             tesseract.SetVariable("tessedit_char_whitelist", "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQLSTUVWXYZ");
+
+            Processors = new List<IImgProcessor>();
         }
 
-        public IImgProcessor Processor { get; set; }
+        public List<IImgProcessor> Processors { get; set; }
 
         public string GetText(Image image)
         {
+            if (Processors != null)
+            {
+                foreach (var item in Processors)
+                {
+                    image = item.Process(image);
+                }
+            }
+
             using (var bitmap = new Bitmap(image))
             {
                 using (var page = tesseract.Process(bitmap))

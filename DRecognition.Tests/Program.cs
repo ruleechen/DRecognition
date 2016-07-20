@@ -1,20 +1,22 @@
-﻿using DRecognition.Processors;
-using System;
-using System.Drawing;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DRecognition.Tests
 {
-    class Program
+    static class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
         {
-            var path = @"C:\Users\rulee.chen\Desktop\DRecognition\DRecognition.Tests\images\6.jpg";
-            var image = Image.FromFile(path);
-
-            var service = new RecognitionService();
-            service.Processor = new SzskProcessor();
-            var text = service.GetText(image);
-            Console.WriteLine(text);
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
         }
     }
 }
