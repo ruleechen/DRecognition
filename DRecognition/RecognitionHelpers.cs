@@ -6,7 +6,7 @@ namespace DRecognition
 {
     public static class RecognitionHelpers
     {
-        public static Bitmap DrawBitmap(this Image image)
+        public static Bitmap ReDraw(this Image image)
         {
             var bitmap = new Bitmap(image.Width, image.Height);
 

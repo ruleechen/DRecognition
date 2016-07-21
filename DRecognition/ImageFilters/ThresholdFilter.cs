@@ -16,7 +16,7 @@ namespace DRecognition.ImageFilters
         {
             bitmap = Grayscale.CommonAlgorithms.RMY.Apply(bitmap);
             var filter = new Threshold(ThresholdValue);
-            return filter.Apply(bitmap);
+            return filter.Apply(bitmap).ReDraw();
         }
     }
 }
