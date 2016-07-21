@@ -1,4 +1,6 @@
 ﻿using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 
 namespace DRecognition
 {
@@ -14,6 +16,29 @@ namespace DRecognition
             }
 
             return bitmap;
+        }
+
+        public static byte[] ToByteArray(this Image imageIn)
+        {
+            if (imageIn == null)
+            {
+                return null;
+            }
+
+            var ms = new MemoryStream();
+            imageIn.Save(ms, ImageFormat.Jpeg);
+            return ms.ToArray();
+        }
+
+        public static Image ToImage(this byte[] byteArrayIn)
+        {
+            if (byteArrayIn == null || byteArrayIn.Length == 0)
+            {
+                return null;
+            }
+
+            var  ms = new MemoryStream(byteArrayIn);
+            return Image.FromStream(ms);
         }
     }
 }

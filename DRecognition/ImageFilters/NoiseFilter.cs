@@ -7,7 +7,6 @@ namespace DRecognition.ImageFilters
         public NoiseFilter(int grayValue)
             : this(grayValue, 1)
         {
-
         }
 
         public NoiseFilter(int grayValue, int maxNearPoints)

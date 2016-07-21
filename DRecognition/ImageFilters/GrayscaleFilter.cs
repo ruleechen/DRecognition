@@ -2,10 +2,12 @@
 
 namespace DRecognition.ImageFilters
 {
-    public class GrayFilter : IImageFilter
+    public class GrayscaleFilter : IImageFilter
     {
         public Bitmap Apply(Bitmap bitmap)
         {
+            //return Grayscale.CommonAlgorithms.BT709.Apply(bitmap);
+
             for (var h = 0; h < bitmap.Height; h++)
             {
                 for (var w = 0; w < bitmap.Width; w++)

@@ -53,7 +53,7 @@ namespace DRecognition.Tests
 
                 if (chkGray.Checked)
                 {
-                    var filter = new GrayFilter();
+                    var filter = new GrayscaleFilter();
                     bitmap = filter.Apply(bitmap);
                     filters.Add(filter);
                 }
