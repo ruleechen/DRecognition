@@ -4,9 +4,9 @@ namespace DRecognition.ImageFilters
 {
     public class DefaultFilter : IImageFilter
     {
-        public Image Apply(Image image)
+        public Bitmap Apply(Bitmap bitmap)
         {
-            return image;
+            return bitmap;
         }
     }
 }

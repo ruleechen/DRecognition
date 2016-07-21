@@ -15,10 +15,15 @@ namespace DRecognition.Tests
 
         private void Recognizing(bool readText = true)
         {
+            if (picSource.Image==null)
+            {
+                return;
+            }
+
             try
             {
                 var filters = new List<IImageFilter>();
-                var image = (Image)picSource.Image.Clone();
+                var bitmap = new Bitmap((Image)picSource.Image.Clone());
 
                 if (!string.IsNullOrWhiteSpace(txtThreshold.Text))
                 {
@@ -26,7 +31,7 @@ namespace DRecognition.Tests
                     if (int.TryParse(txtThreshold.Text.Trim(), out threshold))
                     {
                         var filter = new ThresholdFilter(threshold);
-                        image = filter.Apply(image);
+                        bitmap = filter.Apply(bitmap);
                         filters.Add(filter);
                     }
                 }
@@ -41,18 +46,25 @@ namespace DRecognition.Tests
                     {
                         maxNearPoints = Math.Max(maxNearPoints, 1);
                         var filter = new NoiseFilter(grayValue, maxNearPoints);
-                        image = filter.Apply(image);
+                        bitmap = filter.Apply(bitmap);
                         filters.Add(filter);
                     }
                 }
 
-                picTarge.Image = image;
+                if (chkGray.Checked)
+                {
+                    var filter = new GrayFilter();
+                    bitmap = filter.Apply(bitmap);
+                    filters.Add(filter);
+                }
+
+                picTarge.Image = bitmap;
 
                 if (readText)
                 {
                     var service = new RecognitionService();
-                    service.ImageFilters.AddRange(filters);
-                    var text = service.GetText(image);
+                    //service.ImageFilters.AddRange(filters);
+                    var text = service.GetText(bitmap);
                     txtRecognizing.Text = text;
                 }
             }
@@ -97,6 +109,11 @@ namespace DRecognition.Tests
         }
 
         private void txtMaxNearPoints_TextChanged(object sender, EventArgs e)
+        {
+            Recognizing();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             Recognizing();
         }

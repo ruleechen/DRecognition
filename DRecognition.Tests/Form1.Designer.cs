@@ -37,6 +37,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtGrayValue = new System.Windows.Forms.TextBox();
             this.txtMaxNearPoints = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.chkGray = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.picSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTarge)).BeginInit();
             this.SuspendLayout();
@@ -118,11 +120,33 @@
             this.txtMaxNearPoints.TabIndex = 8;
             this.txtMaxNearPoints.TextChanged += new System.EventHandler(this.txtMaxNearPoints_TextChanged);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(52, 252);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Gray";
+            // 
+            // chkGray
+            // 
+            this.chkGray.AutoSize = true;
+            this.chkGray.Location = new System.Drawing.Point(112, 252);
+            this.chkGray.Name = "chkGray";
+            this.chkGray.Size = new System.Drawing.Size(44, 17);
+            this.chkGray.TabIndex = 10;
+            this.chkGray.Text = "Yes";
+            this.chkGray.UseVisualStyleBackColor = true;
+            this.chkGray.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(429, 323);
+            this.Controls.Add(this.chkGray);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtMaxNearPoints);
             this.Controls.Add(this.txtGrayValue);
             this.Controls.Add(this.label2);
@@ -153,6 +177,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtGrayValue;
         private System.Windows.Forms.TextBox txtMaxNearPoints;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox chkGray;
     }
 }
 

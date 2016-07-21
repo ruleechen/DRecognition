@@ -42,24 +42,21 @@ namespace DRecognition
             return tesseract;
         }
 
-        public string GetText(Image image)
+        public string GetText(Bitmap bitmap)
         {
             if (ImageFilters != null)
             {
                 foreach (var item in ImageFilters)
                 {
-                    image = item.Apply(image);
+                    bitmap = item.Apply(bitmap);
                 }
             }
 
-            using (var bitmap = new Bitmap(image))
+            using (var tesseract = CreateTesseract())
             {
-                using (var tesseract = CreateTesseract())
+                using (var page = tesseract.Process(bitmap))
                 {
-                    using (var page = tesseract.Process(bitmap))
-                    {
-                        return page.GetText();
-                    }
+                    return page.GetText();
                 }
             }
         }

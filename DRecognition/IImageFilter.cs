@@ -4,6 +4,6 @@ namespace DRecognition
 {
     public interface IImageFilter
     {
-        Image Apply(Image image);
+        Bitmap Apply(Bitmap bitmap);
     }
 }

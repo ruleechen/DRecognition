@@ -20,48 +20,46 @@ namespace DRecognition.ImageFilters
 
         public int MaxNearPoints { get; set; }
 
-        public Image Apply(Image image)
+        public Bitmap Apply(Bitmap bitmap)
         {
-            var bmpobj = new Bitmap(image);
-
-            for (int i = 0; i < bmpobj.Width; i++)
+            for (int i = 0; i < bitmap.Width; i++)
             {
-                for (int j = 0; j < bmpobj.Height; j++)
+                for (int j = 0; j < bitmap.Height; j++)
                 {
-                    var piexl = bmpobj.GetPixel(i, j);
+                    var piexl = bitmap.GetPixel(i, j);
                     if (piexl.R < GrayValue)
                     {
                         var nearDots = 0;
 
-                        if (i == 0 || i == bmpobj.Width - 1 || j == 0 || j == bmpobj.Height - 1)
+                        if (i == 0 || i == bitmap.Width - 1 || j == 0 || j == bitmap.Height - 1)
                         {
-                            bmpobj.SetPixel(i, j, Color.FromArgb(255, 255, 255));
+                            bitmap.SetPixel(i, j, Color.FromArgb(255, 255, 255));
                         }
                         else
                         {
-                            if (bmpobj.GetPixel(i - 1, j - 1).R < GrayValue) { nearDots++; }
-                            if (bmpobj.GetPixel(i, j - 1).R < GrayValue) { nearDots++; }
-                            if (bmpobj.GetPixel(i + 1, j - 1).R < GrayValue) { nearDots++; }
-                            if (bmpobj.GetPixel(i - 1, j).R < GrayValue) { nearDots++; }
-                            if (bmpobj.GetPixel(i + 1, j).R < GrayValue) { nearDots++; }
-                            if (bmpobj.GetPixel(i - 1, j + 1).R < GrayValue) { nearDots++; }
-                            if (bmpobj.GetPixel(i, j + 1).R < GrayValue) { nearDots++; }
-                            if (bmpobj.GetPixel(i + 1, j + 1).R < GrayValue) { nearDots++; }
+                            if (bitmap.GetPixel(i - 1, j - 1).R < GrayValue) { nearDots++; }
+                            if (bitmap.GetPixel(i, j - 1).R < GrayValue) { nearDots++; }
+                            if (bitmap.GetPixel(i + 1, j - 1).R < GrayValue) { nearDots++; }
+                            if (bitmap.GetPixel(i - 1, j).R < GrayValue) { nearDots++; }
+                            if (bitmap.GetPixel(i + 1, j).R < GrayValue) { nearDots++; }
+                            if (bitmap.GetPixel(i - 1, j + 1).R < GrayValue) { nearDots++; }
+                            if (bitmap.GetPixel(i, j + 1).R < GrayValue) { nearDots++; }
+                            if (bitmap.GetPixel(i + 1, j + 1).R < GrayValue) { nearDots++; }
                         }
 
                         if (nearDots < MaxNearPoints)
                         {
-                            bmpobj.SetPixel(i, j, Color.FromArgb(255, 255, 255));
+                            bitmap.SetPixel(i, j, Color.FromArgb(255, 255, 255));
                         }
                     }
                     else
                     {
-                        bmpobj.SetPixel(i, j, Color.FromArgb(255, 255, 255));
+                        bitmap.SetPixel(i, j, Color.FromArgb(255, 255, 255));
                     }
                 }
             }
 
-            return bmpobj;
+            return bitmap;
         }
     }
 }
