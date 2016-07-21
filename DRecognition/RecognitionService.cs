@@ -11,12 +11,12 @@ namespace DRecognition
     {
         public RecognitionService()
         {
-            Language = RecognitionLanguage.eng;
+            Language = "eng";
             CharWhitelist = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQLSTUVWXYZ";
             ImageFilters = new List<IImageFilter>();
         }
 
-        public RecognitionLanguage Language { get; set; }
+        public string Language { get; set; }
 
         public string CharWhitelist { get; set; }
 
@@ -35,7 +35,7 @@ namespace DRecognition
                 dataPath = Path.Combine(dataPath, "App_Data", "tessdata");
             }
 
-            var tesseract = new TesseractEngine(dataPath, Language.ToString(), EngineMode.Default);
+            var tesseract = new TesseractEngine(dataPath, Language, EngineMode.Default);
             tesseract.SetVariable("tessedit_pageseg_mode", PageSegMode.Auto.ToString());
             tesseract.SetVariable("tessedit_char_whitelist", CharWhitelist);
 
