@@ -39,13 +39,14 @@
             this.txtMaxNearPoints = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.chkGray = new System.Windows.Forms.CheckBox();
+            this.txtCode = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTarge)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLoadImage
             // 
-            this.btnLoadImage.Location = new System.Drawing.Point(12, 3);
+            this.btnLoadImage.Location = new System.Drawing.Point(12, 9);
             this.btnLoadImage.Name = "btnLoadImage";
             this.btnLoadImage.Size = new System.Drawing.Size(107, 23);
             this.btnLoadImage.TabIndex = 0;
@@ -56,7 +57,7 @@
             // picSource
             // 
             this.picSource.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picSource.Location = new System.Drawing.Point(12, 33);
+            this.picSource.Location = new System.Drawing.Point(12, 38);
             this.picSource.Name = "picSource";
             this.picSource.Size = new System.Drawing.Size(200, 150);
             this.picSource.TabIndex = 1;
@@ -65,7 +66,7 @@
             // picTarge
             // 
             this.picTarge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picTarge.Location = new System.Drawing.Point(218, 33);
+            this.picTarge.Location = new System.Drawing.Point(218, 38);
             this.picTarge.Name = "picTarge";
             this.picTarge.Size = new System.Drawing.Size(200, 150);
             this.picTarge.TabIndex = 2;
@@ -73,7 +74,7 @@
             // 
             // txtThreshold
             // 
-            this.txtThreshold.Location = new System.Drawing.Point(112, 195);
+            this.txtThreshold.Location = new System.Drawing.Point(112, 198);
             this.txtThreshold.Name = "txtThreshold";
             this.txtThreshold.Size = new System.Drawing.Size(100, 20);
             this.txtThreshold.TabIndex = 3;
@@ -82,7 +83,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(52, 198);
+            this.label1.Location = new System.Drawing.Point(52, 201);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 4;
@@ -90,15 +91,15 @@
             // 
             // txtRecognizing
             // 
-            this.txtRecognizing.Location = new System.Drawing.Point(219, 6);
+            this.txtRecognizing.Location = new System.Drawing.Point(218, 12);
             this.txtRecognizing.Name = "txtRecognizing";
-            this.txtRecognizing.Size = new System.Drawing.Size(199, 20);
+            this.txtRecognizing.Size = new System.Drawing.Size(200, 20);
             this.txtRecognizing.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(52, 224);
+            this.label2.Location = new System.Drawing.Point(52, 227);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 13);
             this.label2.TabIndex = 6;
@@ -106,7 +107,7 @@
             // 
             // txtGrayValue
             // 
-            this.txtGrayValue.Location = new System.Drawing.Point(112, 224);
+            this.txtGrayValue.Location = new System.Drawing.Point(112, 227);
             this.txtGrayValue.Name = "txtGrayValue";
             this.txtGrayValue.Size = new System.Drawing.Size(100, 20);
             this.txtGrayValue.TabIndex = 7;
@@ -114,7 +115,7 @@
             // 
             // txtMaxNearPoints
             // 
-            this.txtMaxNearPoints.Location = new System.Drawing.Point(218, 224);
+            this.txtMaxNearPoints.Location = new System.Drawing.Point(218, 227);
             this.txtMaxNearPoints.Name = "txtMaxNearPoints";
             this.txtMaxNearPoints.Size = new System.Drawing.Size(100, 20);
             this.txtMaxNearPoints.TabIndex = 8;
@@ -123,7 +124,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(52, 252);
+            this.label3.Location = new System.Drawing.Point(52, 255);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 13);
             this.label3.TabIndex = 9;
@@ -132,7 +133,7 @@
             // chkGray
             // 
             this.chkGray.AutoSize = true;
-            this.chkGray.Location = new System.Drawing.Point(112, 252);
+            this.chkGray.Location = new System.Drawing.Point(112, 255);
             this.chkGray.Name = "chkGray";
             this.chkGray.Size = new System.Drawing.Size(44, 17);
             this.chkGray.TabIndex = 10;
@@ -140,11 +141,20 @@
             this.chkGray.UseVisualStyleBackColor = true;
             this.chkGray.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // txtCode
+            // 
+            this.txtCode.Location = new System.Drawing.Point(424, 12);
+            this.txtCode.Multiline = true;
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(253, 176);
+            this.txtCode.TabIndex = 11;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(429, 323);
+            this.ClientSize = new System.Drawing.Size(689, 323);
+            this.Controls.Add(this.txtCode);
             this.Controls.Add(this.chkGray);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtMaxNearPoints);
@@ -179,6 +189,7 @@
         private System.Windows.Forms.TextBox txtMaxNearPoints;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox chkGray;
+        private System.Windows.Forms.TextBox txtCode;
     }
 }
 

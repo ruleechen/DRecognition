@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Text;
 using System.Windows.Forms;
 
 namespace DRecognition.Tests
@@ -15,13 +16,16 @@ namespace DRecognition.Tests
 
         private void Recognizing(bool readText = true)
         {
-            if (picSource.Image==null)
+            if (picSource.Image == null)
             {
                 return;
             }
 
             try
             {
+                var code = new StringBuilder();
+                code.AppendLine("var filters = new List<IImageFilter>();");
+
                 var filters = new List<IImageFilter>();
                 var bitmap = new Bitmap((Image)picSource.Image.Clone());
 
@@ -33,7 +37,18 @@ namespace DRecognition.Tests
                         var filter = new ThresholdFilter(threshold);
                         bitmap = filter.Apply(bitmap);
                         filters.Add(filter);
+
+                        code.AppendLine("filters.Add(new ThresholdFilter(" + threshold + "));");
                     }
+                }
+
+                if (chkGray.Checked)
+                {
+                    var filter = new GrayscaleFilter();
+                    bitmap = filter.Apply(bitmap);
+                    filters.Add(filter);
+
+                    code.AppendLine("filters.Add(new GrayscaleFilter());");
                 }
 
                 if (!string.IsNullOrWhiteSpace(txtGrayValue.Text))
@@ -48,17 +63,13 @@ namespace DRecognition.Tests
                         var filter = new NoiseFilter(grayValue, maxNearPoints);
                         bitmap = filter.Apply(bitmap);
                         filters.Add(filter);
+
+                        code.AppendLine("filters.Add(NoiseFilter(" + grayValue + ", " + maxNearPoints + "));");
                     }
                 }
 
-                if (chkGray.Checked)
-                {
-                    var filter = new GrayscaleFilter();
-                    bitmap = filter.Apply(bitmap);
-                    filters.Add(filter);
-                }
-
                 picTarge.Image = bitmap;
+                txtCode.Text = code.ToString();
 
                 if (readText)
                 {
