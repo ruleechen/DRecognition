@@ -63,6 +63,7 @@
     <Compile Include="ImageFilters\DefaultFilter.cs" />
     <Compile Include="ImageFilters\ThresholdFilter.cs" />
     <Compile Include="RecognitionHelpers.cs" />
+    <Compile Include="RecognitionLanguage.cs" />
     <Compile Include="RecognitionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -9,11 +9,21 @@ namespace DRecognition
 {
     public class RecognitionService
     {
-        private TesseractEngine tesseract;
-
         public RecognitionService()
         {
-            var language = "eng";
+            Language = RecognitionLanguage.eng;
+            CharWhitelist = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQLSTUVWXYZ";
+            ImageFilters = new List<IImageFilter>();
+        }
+
+        public RecognitionLanguage Language { get; set; }
+
+        public string CharWhitelist { get; set; }
+
+        public List<IImageFilter> ImageFilters { get; set; }
+
+        private TesseractEngine CreateTesseract()
+        {
             var dataPath = AppDomain.CurrentDomain.BaseDirectory;
 
             if (HttpContext.Current == null)
@@ -25,14 +35,12 @@ namespace DRecognition
                 dataPath = Path.Combine(dataPath, "App_Data", "tessdata");
             }
 
-            tesseract = new TesseractEngine(dataPath, language, EngineMode.Default);
+            var tesseract = new TesseractEngine(dataPath, Language.ToString(), EngineMode.Default);
             tesseract.SetVariable("tessedit_pageseg_mode", PageSegMode.Auto.ToString());
-            tesseract.SetVariable("tessedit_char_whitelist", "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQLSTUVWXYZ");
+            tesseract.SetVariable("tessedit_char_whitelist", CharWhitelist);
 
-            ImageFilters = new List<IImageFilter>();
+            return tesseract;
         }
-
-        public List<IImageFilter> ImageFilters { get; set; }
 
         public string GetText(Image image)
         {
@@ -46,9 +54,12 @@ namespace DRecognition
 
             using (var bitmap = new Bitmap(image))
             {
-                using (var page = tesseract.Process(bitmap))
+                using (var tesseract = CreateTesseract())
                 {
-                    return page.GetText();
+                    using (var page = tesseract.Process(bitmap))
+                    {
+                        return page.GetText();
+                    }
                 }
             }
         }
