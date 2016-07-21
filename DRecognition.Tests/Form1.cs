@@ -68,6 +68,19 @@ namespace DRecognition.Tests
                     }
                 }
 
+                if (!string.IsNullOrWhiteSpace(txtRotateAngle.Text))
+                {
+                    int angle;
+                    if (int.TryParse(txtRotateAngle.Text.Trim(), out angle))
+                    {
+                        var filter = new RotateFilter(angle);
+                        bitmap = filter.Apply(bitmap);
+                        filters.Add(filter);
+
+                        code.AppendLine("filters.Add(new RotateFilter(" + angle + "));");
+                    }
+                }
+
                 picTarge.Image = bitmap;
                 txtCode.Text = code.ToString();
 
@@ -125,6 +138,11 @@ namespace DRecognition.Tests
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            Recognizing();
+        }
+
+        private void txtRotateAngle_TextChanged(object sender, EventArgs e)
         {
             Recognizing();
         }

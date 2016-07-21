@@ -40,6 +40,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.chkGray = new System.Windows.Forms.CheckBox();
             this.txtCode = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtRotateAngle = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTarge)).BeginInit();
             this.SuspendLayout();
@@ -149,11 +151,30 @@
             this.txtCode.Size = new System.Drawing.Size(253, 176);
             this.txtCode.TabIndex = 11;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(67, 282);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(39, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Rotate";
+            // 
+            // txtRotateAngle
+            // 
+            this.txtRotateAngle.Location = new System.Drawing.Point(112, 279);
+            this.txtRotateAngle.Name = "txtRotateAngle";
+            this.txtRotateAngle.Size = new System.Drawing.Size(100, 20);
+            this.txtRotateAngle.TabIndex = 13;
+            this.txtRotateAngle.TextChanged += new System.EventHandler(this.txtRotateAngle_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(689, 323);
+            this.Controls.Add(this.txtRotateAngle);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtCode);
             this.Controls.Add(this.chkGray);
             this.Controls.Add(this.label3);
@@ -190,6 +211,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox chkGray;
         private System.Windows.Forms.TextBox txtCode;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtRotateAngle;
     }
 }
 

@@ -1,11 +1,18 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace DRecognition
 {
     public static class RecognitionHelpers
     {
+        public static string NoSpace(this string source)
+        {
+            if (source == null) { return source; }
+            return Regex.Replace(source, "\\s", string.Empty);
+        }
+
         public static Bitmap ReDraw(this Image image)
         {
             var bitmap = new Bitmap(image.Width, image.Height);
