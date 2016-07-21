@@ -31,6 +31,21 @@ namespace DRecognition.Tests
                     }
                 }
 
+                if (!string.IsNullOrWhiteSpace(txtGrayValue.Text))
+                {
+                    int maxNearPoints = 1;
+                    int.TryParse(txtMaxNearPoints.Text, out maxNearPoints);
+
+                    int grayValue;
+                    if (int.TryParse(txtGrayValue.Text.Trim(), out grayValue))
+                    {
+                        maxNearPoints = Math.Max(maxNearPoints, 1);
+                        var filter = new NoiseFilter(grayValue, maxNearPoints);
+                        image = filter.Apply(image);
+                        filters.Add(filter);
+                    }
+                }
+
                 picTarge.Image = image;
 
                 if (readText)
@@ -65,15 +80,25 @@ namespace DRecognition.Tests
             }
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            picSource.Dispose();
+            picTarge.Dispose();
+        }
+
         private void txtThreshold_TextChanged(object sender, EventArgs e)
         {
             Recognizing();
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void txtGrayValue_TextChanged(object sender, EventArgs e)
         {
-            picSource.Dispose();
-            picTarge.Dispose();
+            Recognizing();
+        }
+
+        private void txtMaxNearPoints_TextChanged(object sender, EventArgs e)
+        {
+            Recognizing();
         }
     }
 }

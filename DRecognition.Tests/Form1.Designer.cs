@@ -34,6 +34,9 @@
             this.txtThreshold = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtRecognizing = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtGrayValue = new System.Windows.Forms.TextBox();
+            this.txtMaxNearPoints = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTarge)).BeginInit();
             this.SuspendLayout();
@@ -90,11 +93,39 @@
             this.txtRecognizing.Size = new System.Drawing.Size(199, 20);
             this.txtRecognizing.TabIndex = 5;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(52, 224);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(34, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Noise";
+            // 
+            // txtGrayValue
+            // 
+            this.txtGrayValue.Location = new System.Drawing.Point(112, 224);
+            this.txtGrayValue.Name = "txtGrayValue";
+            this.txtGrayValue.Size = new System.Drawing.Size(100, 20);
+            this.txtGrayValue.TabIndex = 7;
+            this.txtGrayValue.TextChanged += new System.EventHandler(this.txtGrayValue_TextChanged);
+            // 
+            // txtMaxNearPoints
+            // 
+            this.txtMaxNearPoints.Location = new System.Drawing.Point(218, 224);
+            this.txtMaxNearPoints.Name = "txtMaxNearPoints";
+            this.txtMaxNearPoints.Size = new System.Drawing.Size(100, 20);
+            this.txtMaxNearPoints.TabIndex = 8;
+            this.txtMaxNearPoints.TextChanged += new System.EventHandler(this.txtMaxNearPoints_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(429, 323);
+            this.Controls.Add(this.txtMaxNearPoints);
+            this.Controls.Add(this.txtGrayValue);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.txtRecognizing);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtThreshold);
@@ -119,6 +150,9 @@
         private System.Windows.Forms.TextBox txtThreshold;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtRecognizing;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtGrayValue;
+        private System.Windows.Forms.TextBox txtMaxNearPoints;
     }
 }
 
