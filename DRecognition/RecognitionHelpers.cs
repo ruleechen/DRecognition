@@ -13,6 +13,23 @@ namespace DRecognition
             return Regex.Replace(source, "\\s", string.Empty);
         }
 
+        public static Bitmap GetArgbCopy(this Image image)
+        {
+            var bitmap = new Bitmap(image.Width, image.Height, PixelFormat.Format32bppArgb);
+
+            using (Graphics graphics = Graphics.FromImage(bitmap))
+            {
+                graphics.DrawImage(image,
+                    new Rectangle(0, 0, bitmap.Width, bitmap.Height),
+                    new Rectangle(0, 0, bitmap.Width, bitmap.Height),
+                    GraphicsUnit.Pixel);
+
+                graphics.Flush();
+            }
+
+            return bitmap;
+        }
+
         public static Bitmap ReDraw(this Image image)
         {
             var bitmap = new Bitmap(image.Width, image.Height);
@@ -44,7 +61,7 @@ namespace DRecognition
                 return null;
             }
 
-            var  ms = new MemoryStream(byteArrayIn);
+            var ms = new MemoryStream(byteArrayIn);
             return Image.FromStream(ms);
         }
     }

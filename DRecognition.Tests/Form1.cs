@@ -51,6 +51,15 @@ namespace DRecognition.Tests
                     code.AppendLine("filters.Add(new GrayscaleFilter());");
                 }
 
+                if (chkNegative.Checked)
+                {
+                    var filter = new NegativeFilter();
+                    bitmap = filter.Apply(bitmap);
+                    filters.Add(filter);
+
+                    code.AppendLine("filters.Add(new NegativeFilter());");
+                }
+
                 if (!string.IsNullOrWhiteSpace(txtGrayValue.Text))
                 {
                     int maxNearPoints = 1;
@@ -162,6 +171,11 @@ namespace DRecognition.Tests
         }
 
         private void txtMedian_TextChanged(object sender, EventArgs e)
+        {
+            Recognizing();
+        }
+
+        private void chkNegative_CheckedChanged(object sender, EventArgs e)
         {
             Recognizing();
         }

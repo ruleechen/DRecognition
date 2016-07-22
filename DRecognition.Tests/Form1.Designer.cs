@@ -44,6 +44,8 @@
             this.txtRotateAngle = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtMedian = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.chkNegative = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.picSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTarge)).BeginInit();
             this.SuspendLayout();
@@ -187,11 +189,33 @@
             this.txtMedian.TabIndex = 15;
             this.txtMedian.TextChanged += new System.EventHandler(this.txtMedian_TextChanged);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(56, 344);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Negative";
+            // 
+            // chkNegative
+            // 
+            this.chkNegative.AutoSize = true;
+            this.chkNegative.Location = new System.Drawing.Point(112, 343);
+            this.chkNegative.Name = "chkNegative";
+            this.chkNegative.Size = new System.Drawing.Size(44, 17);
+            this.chkNegative.TabIndex = 17;
+            this.chkNegative.Text = "Yes";
+            this.chkNegative.UseVisualStyleBackColor = true;
+            this.chkNegative.CheckedChanged += new System.EventHandler(this.chkNegative_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(689, 370);
+            this.ClientSize = new System.Drawing.Size(689, 423);
+            this.Controls.Add(this.chkNegative);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.txtMedian);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtRotateAngle);
@@ -236,6 +260,8 @@
         private System.Windows.Forms.TextBox txtRotateAngle;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtMedian;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox chkNegative;
     }
 }
 
