@@ -42,6 +42,8 @@
             this.txtCode = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtRotateAngle = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtMedian = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTarge)).BeginInit();
             this.SuspendLayout();
@@ -154,7 +156,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(67, 282);
+            this.label4.Location = new System.Drawing.Point(67, 320);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(39, 13);
             this.label4.TabIndex = 12;
@@ -162,17 +164,36 @@
             // 
             // txtRotateAngle
             // 
-            this.txtRotateAngle.Location = new System.Drawing.Point(112, 279);
+            this.txtRotateAngle.Location = new System.Drawing.Point(112, 317);
             this.txtRotateAngle.Name = "txtRotateAngle";
             this.txtRotateAngle.Size = new System.Drawing.Size(100, 20);
             this.txtRotateAngle.TabIndex = 13;
             this.txtRotateAngle.TextChanged += new System.EventHandler(this.txtRotateAngle_TextChanged);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(64, 283);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 13);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Median";
+            // 
+            // txtMedian
+            // 
+            this.txtMedian.Location = new System.Drawing.Point(112, 283);
+            this.txtMedian.Name = "txtMedian";
+            this.txtMedian.Size = new System.Drawing.Size(100, 20);
+            this.txtMedian.TabIndex = 15;
+            this.txtMedian.TextChanged += new System.EventHandler(this.txtMedian_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(689, 323);
+            this.ClientSize = new System.Drawing.Size(689, 370);
+            this.Controls.Add(this.txtMedian);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtRotateAngle);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtCode);
@@ -213,6 +234,8 @@
         private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtRotateAngle;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtMedian;
     }
 }
 

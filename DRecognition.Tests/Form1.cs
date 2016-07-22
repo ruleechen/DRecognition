@@ -81,6 +81,20 @@ namespace DRecognition.Tests
                     }
                 }
 
+                if (!string.IsNullOrWhiteSpace(txtMedian.Text))
+                {
+                    var size = 0;
+                    int.TryParse(txtMedian.Text.Trim(), out size);
+                    if (size >= 2)
+                    {
+                        var filter = new MedianFilter(size);
+                        bitmap = filter.Apply(bitmap);
+                        filters.Add(filter);
+
+                        code.AppendLine("filters.Add(new MedianFilter(" + size + "));");
+                    }
+                }
+
                 picTarge.Image = bitmap;
                 txtCode.Text = code.ToString();
 
@@ -143,6 +157,11 @@ namespace DRecognition.Tests
         }
 
         private void txtRotateAngle_TextChanged(object sender, EventArgs e)
+        {
+            Recognizing();
+        }
+
+        private void txtMedian_TextChanged(object sender, EventArgs e)
         {
             Recognizing();
         }

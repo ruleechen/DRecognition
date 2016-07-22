@@ -68,6 +68,7 @@
     <Compile Include="IImageFilter.cs" />
     <Compile Include="ImageFilters\DefaultFilter.cs" />
     <Compile Include="ImageFilters\GrayscaleFilter.cs" />
+    <Compile Include="ImageFilters\MedianFilter.cs" />
     <Compile Include="ImageFilters\NoiseFilter.cs" />
     <Compile Include="ImageFilters\RotateFilter.cs" />
     <Compile Include="ImageFilters\ThresholdFilter.cs" />
