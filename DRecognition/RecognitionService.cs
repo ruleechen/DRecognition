@@ -20,7 +20,7 @@ namespace DRecognition
 
         public string CharWhitelist { get; set; }
 
-        public List<IImageFilter> ImageFilters { get; set; }
+        public List<IImageFilter> ImageFilters { get; private set; }
 
         private TesseractEngine CreateTesseract()
         {
@@ -42,7 +42,19 @@ namespace DRecognition
             return tesseract;
         }
 
-        public string GetText(Bitmap bitmap)
+        public RecognitionService AddFilter(IImageFilter filter)
+        {
+            ImageFilters.Add(filter);
+            return this;
+        }
+
+        public RecognitionService AddFilters(IEnumerable<IImageFilter> filters)
+        {
+            ImageFilters.AddRange(filters);
+            return this;
+        }
+
+        public Bitmap ApplyFilters(Bitmap bitmap)
         {
             if (ImageFilters != null)
             {
@@ -51,6 +63,13 @@ namespace DRecognition
                     bitmap = item.Apply(bitmap);
                 }
             }
+
+            return bitmap;
+        }
+
+        public string GetText(Bitmap bitmap)
+        {
+            bitmap = ApplyFilters(bitmap);
 
             using (var tesseract = CreateTesseract())
             {

@@ -24,31 +24,24 @@ namespace DRecognition.Tests
             try
             {
                 var filters = new List<IImageFilter>();
-                var bitmap = new Bitmap((Image)picSource.Image.Clone());
 
                 if (!string.IsNullOrWhiteSpace(txtThreshold.Text))
                 {
                     int threshold;
                     if (int.TryParse(txtThreshold.Text.Trim(), out threshold))
                     {
-                        var filter = new ThresholdFilter(threshold);
-                        bitmap = filter.Apply(bitmap);
-                        filters.Add(filter);
+                        filters.Add(new ThresholdFilter(threshold));
                     }
                 }
 
                 if (chkGray.Checked)
                 {
-                    var filter = new GrayscaleFilter();
-                    bitmap = filter.Apply(bitmap);
-                    filters.Add(filter);
+                    filters.Add(new GrayscaleFilter());
                 }
 
                 if (chkNegative.Checked)
                 {
-                    var filter = new NegativeFilter();
-                    bitmap = filter.Apply(bitmap);
-                    filters.Add(filter);
+                    filters.Add(new NegativeFilter());
                 }
 
                 if (!string.IsNullOrWhiteSpace(txtGrayValue.Text))
@@ -60,9 +53,7 @@ namespace DRecognition.Tests
                     if (int.TryParse(txtGrayValue.Text.Trim(), out grayValue))
                     {
                         maxNearPoints = Math.Max(maxNearPoints, 1);
-                        var filter = new NoiseFilter(grayValue, maxNearPoints);
-                        bitmap = filter.Apply(bitmap);
-                        filters.Add(filter);
+                        filters.Add(new NoiseFilter(grayValue, maxNearPoints));
                     }
                 }
 
@@ -71,9 +62,7 @@ namespace DRecognition.Tests
                     int angle;
                     if (int.TryParse(txtRotateAngle.Text.Trim(), out angle))
                     {
-                        var filter = new RotateFilter(angle);
-                        bitmap = filter.Apply(bitmap);
-                        filters.Add(filter);
+                        filters.Add(new RotateFilter(angle));
                     }
                 }
 
@@ -83,19 +72,19 @@ namespace DRecognition.Tests
                     int.TryParse(txtMedian.Text.Trim(), out size);
                     if (size >= 2)
                     {
-                        var filter = new MedianFilter(size);
-                        bitmap = filter.Apply(bitmap);
-                        filters.Add(filter);
+                        filters.Add(new MedianFilter(size));
                     }
                 }
 
-                picTarge.Image = bitmap;
+                var service = new RecognitionService();
+                service.AddFilters(filters);
+
+                var bitmap = new Bitmap((Image)picSource.Image.Clone());
+                picTarge.Image = service.ApplyFilters(bitmap);
                 txtCode.Text = new CodeBuilder().AddFilters(filters).GetCode();
 
                 if (readText)
                 {
-                    var service = new RecognitionService();
-                    //service.ImageFilters.AddRange(filters);
                     var text = service.GetText(bitmap);
                     txtRecognizing.Text = text;
                 }
