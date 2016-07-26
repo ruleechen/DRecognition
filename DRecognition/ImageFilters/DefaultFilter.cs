@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace DRecognition.ImageFilters
 {
@@ -7,6 +8,11 @@ namespace DRecognition.ImageFilters
         public Bitmap Apply(Bitmap bitmap)
         {
             return bitmap;
+        }
+
+        public string GetCode()
+        {
+            return $"new {GetType().Name}()";
         }
     }
 }

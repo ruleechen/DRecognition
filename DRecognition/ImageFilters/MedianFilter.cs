@@ -73,5 +73,10 @@ namespace DRecognition.ImageFilters
 
             return newBitmap;
         }
+
+        public string GetCode()
+        {
+            return $"new {GetType().Name}({Size})";
+        }
     }
 }

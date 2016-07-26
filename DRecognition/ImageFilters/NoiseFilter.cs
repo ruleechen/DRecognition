@@ -60,5 +60,10 @@ namespace DRecognition.ImageFilters
 
             return bitmap;
         }
+
+        public string GetCode()
+        {
+            return $"new {GetType().Name}({GrayValue}, {MaxNearPoints})";
+        }
     }
 }

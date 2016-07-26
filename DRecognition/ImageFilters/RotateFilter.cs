@@ -21,5 +21,10 @@ namespace DRecognition.ImageFilters
             graphics.DrawImage(bitmap, new Point(0, 0));
             return newBitmap;
         }
+
+        public string GetCode()
+        {
+            return $"new {GetType().Name}({Angle})";
+        }
     }
 }

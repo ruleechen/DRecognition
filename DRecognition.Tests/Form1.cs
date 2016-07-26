@@ -23,9 +23,6 @@ namespace DRecognition.Tests
 
             try
             {
-                var code = new StringBuilder();
-                code.AppendLine("var filters = new List<IImageFilter>();");
-
                 var filters = new List<IImageFilter>();
                 var bitmap = new Bitmap((Image)picSource.Image.Clone());
 
@@ -37,8 +34,6 @@ namespace DRecognition.Tests
                         var filter = new ThresholdFilter(threshold);
                         bitmap = filter.Apply(bitmap);
                         filters.Add(filter);
-
-                        code.AppendLine("filters.Add(new ThresholdFilter(" + threshold + "));");
                     }
                 }
 
@@ -47,8 +42,6 @@ namespace DRecognition.Tests
                     var filter = new GrayscaleFilter();
                     bitmap = filter.Apply(bitmap);
                     filters.Add(filter);
-
-                    code.AppendLine("filters.Add(new GrayscaleFilter());");
                 }
 
                 if (chkNegative.Checked)
@@ -56,8 +49,6 @@ namespace DRecognition.Tests
                     var filter = new NegativeFilter();
                     bitmap = filter.Apply(bitmap);
                     filters.Add(filter);
-
-                    code.AppendLine("filters.Add(new NegativeFilter());");
                 }
 
                 if (!string.IsNullOrWhiteSpace(txtGrayValue.Text))
@@ -72,8 +63,6 @@ namespace DRecognition.Tests
                         var filter = new NoiseFilter(grayValue, maxNearPoints);
                         bitmap = filter.Apply(bitmap);
                         filters.Add(filter);
-
-                        code.AppendLine("filters.Add(NoiseFilter(" + grayValue + ", " + maxNearPoints + "));");
                     }
                 }
 
@@ -85,8 +74,6 @@ namespace DRecognition.Tests
                         var filter = new RotateFilter(angle);
                         bitmap = filter.Apply(bitmap);
                         filters.Add(filter);
-
-                        code.AppendLine("filters.Add(new RotateFilter(" + angle + "));");
                     }
                 }
 
@@ -99,13 +86,11 @@ namespace DRecognition.Tests
                         var filter = new MedianFilter(size);
                         bitmap = filter.Apply(bitmap);
                         filters.Add(filter);
-
-                        code.AppendLine("filters.Add(new MedianFilter(" + size + "));");
                     }
                 }
 
                 picTarge.Image = bitmap;
-                txtCode.Text = code.ToString();
+                txtCode.Text = new CodeBuilder().AddFilters(filters).GetCode();
 
                 if (readText)
                 {
@@ -178,6 +163,42 @@ namespace DRecognition.Tests
         private void chkNegative_CheckedChanged(object sender, EventArgs e)
         {
             Recognizing();
+        }
+    }
+
+    public class CodeBuilder
+    {
+        public CodeBuilder()
+        {
+            Filters = new List<IImageFilter>();
+        }
+
+        public List<IImageFilter> Filters { get; private set; }
+
+        public CodeBuilder AddFilter(IImageFilter filter)
+        {
+            Filters.Add(filter);
+            return this;
+        }
+
+        public CodeBuilder AddFilters(IEnumerable<IImageFilter> filters)
+        {
+            Filters.AddRange(filters);
+            return this;
+        }
+
+        public string GetCode()
+        {
+            var code = new StringBuilder();
+
+            code.AppendLine("var filters = new List<IImageFilter>();");
+
+            foreach (var item in Filters)
+            {
+                code.AppendLine("filters.Add(" + item.GetCode() + ");");
+            }
+
+            return code.ToString();
         }
     }
 }

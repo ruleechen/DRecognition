@@ -18,5 +18,10 @@ namespace DRecognition.ImageFilters
             var filter = new Threshold(ThresholdValue);
             return filter.Apply(bitmap).ReDraw();
         }
+
+        public string GetCode()
+        {
+            return $"new {GetType().Name}({ThresholdValue})";
+        }
     }
 }

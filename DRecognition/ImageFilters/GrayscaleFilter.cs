@@ -21,6 +21,11 @@ namespace DRecognition.ImageFilters
             return bitmap;
         }
 
+        public string GetCode()
+        {
+            return $"new {GetType().Name}()";
+        }
+
         private static int GetGrayNumColor(Color posClr)
         {
             return (posClr.R * 19595 + posClr.G * 38469 + posClr.B * 7472) >> 16;

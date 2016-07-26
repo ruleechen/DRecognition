@@ -41,5 +41,10 @@ namespace DRecognition.ImageFilters
 
             return bmpNew;
         }
+
+        public string GetCode()
+        {
+            return $"new {GetType().Name}()";
+        }
     }
 }
