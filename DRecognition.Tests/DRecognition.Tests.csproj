@@ -110,6 +110,17 @@
     <Content Include="images\t1.png" />
     <Content Include="images\t2.png" />
     <Content Include="images\t3.png" />
+    <Content Include="images\yz %281%29.png" />
+    <Content Include="images\yz %2810%29.png" />
+    <Content Include="images\yz %282%29.png" />
+    <Content Include="images\yz %283%29.png" />
+    <Content Include="images\yz %284%29.png" />
+    <Content Include="images\yz %285%29.png" />
+    <Content Include="images\yz %286%29.png" />
+    <Content Include="images\yz %287%29.png" />
+    <Content Include="images\yz %288%29.png" />
+    <Content Include="images\yz %289%29.png" />
+    <Content Include="images\yz.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
