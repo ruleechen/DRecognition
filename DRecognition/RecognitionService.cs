@@ -82,7 +82,7 @@ namespace DRecognition
             {
                 using (var page = tesseract.Process(bitmap))
                 {
-                    return page.GetText();
+                    return page.GetText().NoSpace();
                 }
             }
         }
