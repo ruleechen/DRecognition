@@ -24,15 +24,22 @@ namespace DRecognition
 
         private TesseractEngine CreateTesseract()
         {
-            var dataPath = AppDomain.CurrentDomain.BaseDirectory;
+            const string tessdata = "tessdata";
+            var basePath = AppDomain.CurrentDomain.BaseDirectory;
+            var dataPath = string.Empty;
 
             if (HttpContext.Current == null)
             {
-                dataPath = Path.Combine(dataPath, "..\\..\\tessdata");
+                dataPath = Path.Combine(basePath, tessdata);
+
+                if (!Directory.Exists(dataPath))
+                {
+                    dataPath = Path.Combine(basePath, "..\\..\\" + tessdata);
+                }
             }
             else
             {
-                dataPath = Path.Combine(dataPath, "App_Data", "tessdata");
+                dataPath = Path.Combine(basePath, "App_Data", tessdata);
             }
 
             var tesseract = new TesseractEngine(dataPath, Language, EngineMode.Default);
